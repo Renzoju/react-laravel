@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { GraphCanvas, darkTheme } from 'reagraph';
+import { Link, Head } from '@inertiajs/react';
+import { home } from '@/routes';
 
 type NodeInfo = {
   id: string;
@@ -35,6 +37,23 @@ export default function App() {
 
   return (
     <>
+      <Head title="Network">
+        <link rel="preconnect" href="https://fonts.bunny.net" />
+        <link
+          href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600"
+          rel="stylesheet"
+        />
+      </Head>
+
+      <div className="fixed top-4 left-4 z-10">
+        <Link
+          href={home()}
+          className="inline-block rounded-sm border border-[#19140035] px-5 py-1.5 text-sm leading-normal text-[#1b1b18] hover:border-[#1915014a] dark:border-[#3E3E3A] dark:text-[#EDEDEC] dark:hover:border-[#62605b]"
+        >
+          Home
+        </Link>
+      </div>
+      
       <GraphCanvas
         nodes={nodes}
         edges={edges}
@@ -50,7 +69,7 @@ export default function App() {
         }}
       />
       {selectedNode && (
-        <div style={{position: 'fixed', top: '10px', left: '10px', background: '#333', color: '#fff', padding: '10px', borderRadius: '5px'}}>
+        <div style={{position: 'fixed', top: '10px', right: '10px', background: '#333', color: '#fff', padding: '10px', borderRadius: '5px'}}>
           <p><strong>ID:</strong> {selectedNode.id}</p>
           <p><strong>Label:</strong> {selectedNode.label}</p>
           <p><strong>Fill:</strong> {selectedNode.fill}</p>
