@@ -52,7 +52,7 @@ const nodes: NodeInfo[] = [
     label: 'Vincent Bakker',
     fill: '#ff0000',
     size: 8,
-    data: { type: 'Gay'},
+    data: { type: 'MobileDev'},
   },
   {
     id: '7',
@@ -67,6 +67,12 @@ const nodes: NodeInfo[] = [
     size: 1,
     data: { type: 'Geitje' },
   },
+  {
+    id: '9',
+    label: 'punthenk',
+    fill: '#ff3434',
+    data: { type: 'THE G.O.A.T.' },
+  }
 ];
 
 const edges = [
@@ -78,6 +84,7 @@ const edges = [
   { id: 'e8-2', source: '8', target: '2' },
   { id: 'e1-2', source: '1', target: '2' },
   { id: 'e7-2', source: '7', target: '2' },
+  { id: 'e3-9', source: '3', target: '9' },
 ];
 
 export default function App() {
@@ -105,9 +112,10 @@ export default function App() {
       <GraphCanvas
         nodes={nodes}
         edges={edges}
-        cameraMode="rotate"
+        // cameraMode="rotate"
         theme={darkTheme}
         clusterAttribute="type"
+        draggable
         onNodeClick={(node) => {
           const info: NodeInfo =
             nodes.find((n) => n.id === node.id) ?? {
